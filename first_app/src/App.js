@@ -1,77 +1,52 @@
 import './App.css';
 import {useState, useEffect} from 'react';
+import SearchIcon from './search.svg';
+import MovieCard from './MovieCard';
+  //API key: 54fff2a7
+  //url: http://www.omdbapi.com/?i=tt3896198&apikey=54fff2a7
+const API_URL='http://www.omdbapi.com/?apikey=54fff2a7';
 
+// const movies =[{
+//   Poster: "https://m.media-amazon.com/images/M/MV5BYjFhN2RjZTctMzA2Ni00NzE2LWJmYjMtNDAyYTllOTkyMmY3XkEyXkFqcGdeQXVyNTA0OTU0OTQ@._V1_SX300.jpg",
+//   Title: "Italian Spiderman",
+//   Type: "movie",
+//   Year: "2007",
+//   imdbID: "tt2705436",
+//   }];
 
-const Henry = (props) => {
- return (
-   <>
-   <h1>age: {props.age} </h1>
-   <h1>gender: {props.gender}</h1>
-   <h1>{ props.cute ? 'is cute' : 'not cute at all'}</h1>
-   </>
- );
-};
-
-const Cathy = (props) => {
-  return (
-    <>
-    <h1>age: {props.age} </h1>
-    <h1>gender: {props.gender}</h1>
-    <h1>{ props.cute ? 'is cute' : 'not cute at all'}</h1>
-    </>
-  );
- };
-
- 
 const App = ()=> {
-  const son = {
-    name:  "Henry",
-    age: 5,
-    gender: 'M',
-    cute: false,
-  };
-  const daughter = {
-    name:  "Cathy",
-    age: '2 Months',
-    gender: 'W',
-    cute: true,
-  };
-  const isHe = true;
-  const isShe = true;
+  const [movies, setMovies] = useState([{}]);
+  const [searchTerm, setSearchTerm] = useState('');
 
-
-  const [counter, setCounter] = useState(son.age);
-
+  const searchMovies = async(title)=>{
+  const response = await fetch(`${API_URL}&s=${title}`);
+  const data = await response.json();
+  console.log(data);
+  setMovies(data.Search)
+  // return data;
+  
+};
   //it's happening often
-  useEffect(()=>{
-   alert('ohhhh Henry is '+counter +' years old');
- }, [counter]);
+  useEffect(()=>{searchMovies('Spiderman')}, []);
 
   return (
     //JSX
     <div className="App">
-      <header className="App-header">
-      <h1> Welcome to my home: </h1>
-      </header>
-      <body>
-      <div> 
-      <h1>Hi there my son {isHe ?  son.name : daughter.name}</h1>
-      <Henry age={son.age} gender={son.gender} cute={son.cute} />
-      <h1>Henry wil be {counter} yaers old </h1>
-      <div>
-        <button onClick={()=>setCounter((counter)=>counter-1)}>Last year</button>
+      <h1>Movie Land</h1>
+      <div className='search'>
+        <input placeholder='Search for moives' value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)}/>
+        <img src={SearchIcon} alt="search" onClick={()=>searchMovies(searchTerm)} />
       </div>
-      <div>
-        <button onClick={()=>setCounter((counter)=>counter+1)}>Next year</button>
-      </div>
-
-      </div> 
-      <div>
-      <h1>Hi there my daughter {!isShe ? (<> {daughter.name} </>)  : (<> {daughter.name} </>)}</h1>
-      
-      <Cathy age={daughter.age} gender={daughter.gender} cute={daughter.cute} />
-      </div>  
-      </body>
+      {
+        movies?.length > 0 ? ( <div className='container'>
+          {movies.map((movie)=>(
+            <MovieCard movie={movie}/>
+          ))}
+      </div>) : ( <div className='container'>
+        <h2> No movie found</h2>
+      </div>)
+      }
+     
     </div>
   );
 }
