@@ -3,6 +3,8 @@ import {useState, useEffect} from 'react';
 import SearchIcon from './search.svg';
 import MovieCard from './MovieCard';
 import Posts from './Posts';
+import DataTable from './DataTable';
+
   //API key: 54fff2a7
   //url: http://www.omdbapi.com/?i=tt3896198&apikey=54fff2a7
 const API_URL='http://www.omdbapi.com/?apikey=54fff2a7';
@@ -31,7 +33,7 @@ const App = ()=> {
   useEffect(()=>{searchMovies('Spiderman')}, []);
 
   return (
-    //JSX
+    //JSX movie land
     // <div className="App">
     //   <h1>Movie Land</h1>
     //   <div className='search'>
@@ -49,8 +51,15 @@ const App = ()=> {
     //   }
      
     // </div>
+
+    //JSX Posts table
+    // <div className='App'>
+    //   <Posts></Posts>
+    // </div>
+
+      //JSX Posts table
     <div className='App'>
-      <Posts></Posts>
+      <DataTable />
     </div>
   );
 }
