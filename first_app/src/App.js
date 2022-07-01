@@ -1,7 +1,8 @@
-import './App.css';
+// import './App.css';
 import {useState, useEffect} from 'react';
 import SearchIcon from './search.svg';
 import MovieCard from './MovieCard';
+import Posts from './Posts';
   //API key: 54fff2a7
   //url: http://www.omdbapi.com/?i=tt3896198&apikey=54fff2a7
 const API_URL='http://www.omdbapi.com/?apikey=54fff2a7';
@@ -21,7 +22,7 @@ const App = ()=> {
   const searchMovies = async(title)=>{
   const response = await fetch(`${API_URL}&s=${title}`);
   const data = await response.json();
-  console.log(data);
+  // console.log(data);
   setMovies(data.Search)
   // return data;
   
@@ -31,22 +32,25 @@ const App = ()=> {
 
   return (
     //JSX
-    <div className="App">
-      <h1>Movie Land</h1>
-      <div className='search'>
-        <input placeholder='Search for moives' value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)}/>
-        <img src={SearchIcon} alt="search" onClick={()=>searchMovies(searchTerm)} />
-      </div>
-      {
-        movies?.length > 0 ? ( <div className='container'>
-          {movies.map((movie)=>(
-            <MovieCard movie={movie}/>
-          ))}
-      </div>) : ( <div className='container'>
-        <h2> No movie found</h2>
-      </div>)
-      }
+    // <div className="App">
+    //   <h1>Movie Land</h1>
+    //   <div className='search'>
+    //     <input placeholder='Search for moives' value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)}/>
+    //     <img src={SearchIcon} alt="search" onClick={()=>searchMovies(searchTerm)} />
+    //   </div>
+    //   {
+    //     movies?.length > 0 ? ( <div className='container'>
+    //       {movies.map((movie)=>(
+    //         <MovieCard movie={movie}/>
+    //       ))}
+    //   </div>) : ( <div className='container'>
+    //     <h2> No movie found</h2>
+    //   </div>)
+    //   }
      
+    // </div>
+    <div className='App'>
+      <Posts></Posts>
     </div>
   );
 }
