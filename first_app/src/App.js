@@ -4,6 +4,7 @@ import SearchIcon from './search.svg';
 import MovieCard from './MovieCard';
 import Posts from './Posts';
 import DataTable from './DataTable';
+import Hooks from './Hooks';
 
   //API key: 54fff2a7
   //url: http://www.omdbapi.com/?i=tt3896198&apikey=54fff2a7
@@ -58,8 +59,13 @@ const App = ()=> {
     // </div>
 
       //JSX Posts table
-    <div className='App'>
-      <DataTable />
+    // <div className='App'>
+    //   <DataTable />
+    // </div>
+    //Jsx Hooks
+    
+    <div>
+      <Hooks />
     </div>
   );
 }
