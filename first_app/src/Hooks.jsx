@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import ChildBtn from './ChildBtn';
 import TypeField from './TypeField';
 import MatchField from './MatchField';
-import { type } from '@testing-library/user-event/dist/type';
+// import { type } from '@testing-library/user-event/dist/type';
 
 
 //createContext has to be out of the model
@@ -104,6 +104,11 @@ const Hooks=()=>{
           * useCase: when have multi components and you have multi-props to pass, just put in context
          */
           const [text, setText] = useState('');
+
+          /**
+           * Next will be computed???
+           * 
+          */
 
     return <div>
         <h4 className="text-primary">userState example: </h4>
