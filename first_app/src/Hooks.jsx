@@ -1,8 +1,8 @@
-import React, {useEffect, useState, useReducer, useRef, useLayoutEffect, useImperativeHandle, forwardRef, createContext} from 'react';
+import React, {useEffect, useState, useReducer, useRef, useLayoutEffect, useImperativeHandle, forwardRef, createContext, useMemo, useCallback} from 'react';
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.css';
 import ChildBtn from './ChildBtn';
-import TypeField from './TypeField';
+import TypeField from './TypeField'; 
 import MatchField from './MatchField';
 // import { type } from '@testing-library/user-event/dist/type';
 
@@ -106,9 +106,34 @@ const Hooks=()=>{
           const [text, setText] = useState('');
 
           /**
+           * useMemo, useCallback
            * Next will be computed???
-           * 
+           * The major difference between useCallback and useMemo is that useCallback will memory the returned value, whereas useMemo will memory the function. Essentially, the only difference between these hooks is that one caches a value type, and the other caches a function
           */
+         const [family, setFamily] = useState([]);
+         const [showFamily, setShowFamily] = useState([true]);
+        useEffect(()=>{
+            const dady = {name: 'dady', id: 1};
+            const mommy = {name: 'mommy', id: 2};
+            const henry = {name: 'henry', id: 3};
+            const families = [dady,mommy, henry]
+            // setFamily(families)
+        });
+        const computedFun=()=>{
+            console.log('Computed triggered!');
+            const newFamily = family;
+            if(showFamily){
+                const cathy = {name: 'cathy', id: 4};
+                newFamily.push(cathy);
+                setFamily(newFamily);
+                console.log(family.length)
+                return;
+            }
+            newFamily.pop();
+            setFamily(newFamily);
+            console.log(family.length)
+        };
+         const getRefreshed = useMemo(()=>computedFun(showFamily),[showFamily]);
 
     return <div>
         <h4 className="text-primary">userState example: </h4>
@@ -157,6 +182,13 @@ const Hooks=()=>{
             <MatchField></MatchField>
             </TypeContext.Provider>
         </div>
+        <br />
+        <br />
+        <h4 className="text-primary">useMemo example: </h4>
+        <h4>We have {family.length} members in the family</h4>
+        <h3>The last one is {getRefreshed} </h3>
+        <button onClick={()=>setShowFamily(true)}>Show Current family</button>
+        <button onClick={()=>setShowFamily(false)}>Show Old family</button>
     </div>
 }
 

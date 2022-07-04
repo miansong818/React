@@ -8,7 +8,7 @@ import Hooks from './Hooks';
 
   //API key: 54fff2a7
   //url: http://www.omdbapi.com/?i=tt3896198&apikey=54fff2a7
-const API_URL='http://www.omdbapi.com/?apikey=54fff2a7';
+const API_URL='http://www.omdbapi.com/?apikey=54fff2a7'; asdsad
 
 // const movies =[{
 //   Poster: "https://m.media-amazon.com/images/M/MV5BYjFhN2RjZTctMzA2Ni00NzE2LWJmYjMtNDAyYTllOTkyMmY3XkEyXkFqcGdeQXVyNTA0OTU0OTQ@._V1_SX300.jpg",
@@ -18,7 +18,7 @@ const API_URL='http://www.omdbapi.com/?apikey=54fff2a7';
 //   imdbID: "tt2705436",
 //   }];
 
-const App = ()=> {
+const App = ()=> {  
   const [movies, setMovies] = useState([{}]);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -26,7 +26,7 @@ const App = ()=> {
   const response = await fetch(`${API_URL}&s=${title}`);
   const data = await response.json();
   // console.log(data);
-  setMovies(data.Search)
+  setMovies(data.Search);
   // return data;
   
 };
