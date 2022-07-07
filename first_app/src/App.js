@@ -14,9 +14,17 @@ import ResizeWindow from './resizeWindown';
 import DataTable from './DataTable';
 import JokePad from './components/jokePad';
 import Posts from './Posts';
+<<<<<<< HEAD
 import 'bootstrap/dist/css/bootstrap.css';
 // API key: 54fff2a7
 // url: http://www.omdbapi.com/?i=tt3896198&apikey=54fff2a7
+=======
+import DataTable from './DataTable';
+import Hooks from './Hooks';
+
+  //API key: 54fff2a7
+  //url: http://www.omdbapi.com/?i=tt3896198&apikey=54fff2a7
+>>>>>>> cd18c8fc6250e59f94c7a8a1a523e581928a0d5c
 const API_URL='http://www.omdbapi.com/?apikey=54fff2a7';
 
 // const movies =[{
@@ -45,6 +53,7 @@ const App = ()=> {
 
 
   return (
+<<<<<<< HEAD
   // JSX movie land
   // <div className="App">
   //   <h1>Movie Land</h1>
@@ -104,6 +113,40 @@ const App = ()=> {
       {/* <Hooks /> */}
 
       {/* <DataTable /> */}
+=======
+    //JSX movie land
+    // <div className="App">
+    //   <h1>Movie Land</h1>
+    //   <div className='search'>
+    //     <input placeholder='Search for moives' value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)}/>
+    //     <img src={SearchIcon} alt="search" onClick={()=>searchMovies(searchTerm)} />
+    //   </div>
+    //   {
+    //     movies?.length > 0 ? ( <div className='container'>
+    //       {movies.map((movie)=>(
+    //         <MovieCard movie={movie}/>
+    //       ))}
+    //   </div>) : ( <div className='container'>
+    //     <h2> No movie found</h2>
+    //   </div>)
+    //   }
+     
+    // </div>
+
+    //JSX Posts table
+    // <div className='App'>
+    //   <Posts></Posts>
+    // </div>
+
+      //JSX Posts table
+    // <div className='App'>
+    //   <DataTable />
+    // </div>
+    //Jsx Hooks
+    
+    <div>
+      <Hooks />
+>>>>>>> cd18c8fc6250e59f94c7a8a1a523e581928a0d5c
     </div>
   );
 };
