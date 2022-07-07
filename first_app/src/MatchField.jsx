@@ -1,12 +1,12 @@
 import React, {useContext} from 'react';
-import {TypeContext} from "./Hooks";
+import {TypeContext} from './Hooks';
 
 const MatchField=()=>{
-    const {text} = useContext(TypeContext);
+  const {text} = useContext(TypeContext);
 
-    return <div>
+  return <div>
         Matching typed content: {text}
-    </div>;
+  </div>;
 };
 
 export default MatchField;

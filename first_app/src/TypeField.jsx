@@ -1,10 +1,12 @@
 import React, {useContext} from 'react';
-import {TypeContext} from "./Hooks";
+import {TypeContext} from './Hooks';
 
 const TypeField=()=>{
-    const {setText}=useContext(TypeContext)
+  const {setText}=useContext(TypeContext);
 
-    return <input onChange={(event)=>{setText(event.target.value)}}/>;
+  return <input onChange={(event)=>{
+    setText(event.target.value);
+  }}/>;
 };
 
 export default TypeField;

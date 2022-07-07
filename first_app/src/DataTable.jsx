@@ -1,13 +1,32 @@
-// import React, {useEffect, useState} from 'react';
+/* eslint-disable require-jsdoc */
+import React, {Component} from 'react';
 
+export class DataTable extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      data: new Date(),
+      count: 0,
+    };
+  }
 
-// const DataTable=(data)=>{
-//     return (
-//         <table>
-//             <thead></thead>
-//             <tbody></tbody>
-//         </table>
-//     );
-// }
+  componentWillUnmount() {
+    console.log('componentWillUnmount');
+  }
+  componentDidMount() {
+    console.log('componentDidMount');
+  }
+  shouldComponentUpdate() {
+    console.log('componentDidMount');
+  }
+  componentDidCatch() {
+    console.log('componentDidCatch');
+  }
+  render() {
+    return (
+      <div>DataTable</div>
+    );
+  }
+}
 
-// export default DataTable;
+export default DataTable;
