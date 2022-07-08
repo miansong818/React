@@ -64,9 +64,6 @@ const Posts = () =>{
           <p className='page-link' onClick={()=>pagination(page)}>{page}</p>
         </li>
       ))}
-      {/* <li className='page-link'>1</li>
-            <li className='page-link'>2</li>
-            <li className='page-link'>3</li> */}
     </ul>
   </nav>
   </div>;

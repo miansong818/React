@@ -112,7 +112,7 @@ const Hooks=()=>{
   /**
            * useMemo, useCallback
            * Next will be computed???
-           * The major difference between useCallback and useMemo is that useCallback will memory the returned value, whereas useMemo will memory the function. Essentially, the only difference between these hooks is that one caches a value type, and the other caches a function
+           * The major difference between useCallback and useMemo is that useCallback will memory the entire function, whereas useMemo will memory returned value. Essentially, the only difference between these hooks is that one caches a value type, and the other caches a function
           */
   const [family, setFamily] = useState([]);
   const [showFamily, setShowFamily] = useState([true]);
@@ -137,7 +137,11 @@ const Hooks=()=>{
     setFamily(newFamily);
     console.log(family.length);
   };
+  // why we need to use useMemo, because whenever a state changed in current component, it will be rerendered. We use useMemo to improve the effiency of memory using for the components.
+  // computedFun will be only called when showFamily state changed. Otherwise when other state changes, computedFun won't be triggered
+  // if computed function take very long time, this will be a greate improvement for components rerendering.
   const getRefreshed = useMemo(()=>computedFun(showFamily), [showFamily]);
+  // const getRefreshed = useCallback(()=>computedFun(showFamily), [showFamily]);
 
   return <div>
     <h4 className="text-primary">userState example: </h4>
